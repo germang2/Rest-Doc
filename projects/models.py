@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 class Project(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=500, blank=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    colaborators = models.ManyToManyField(User)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owner')
 
     def __str__(self):
         return self.name
