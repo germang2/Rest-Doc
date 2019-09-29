@@ -15,10 +15,16 @@ class Method(models.Model):
     verb = models.CharField(max_length=12)
     description = models.CharField(max_length=100, blank=True)
 
+    def __str__(self):
+        return self.verb
+
 
 class Header(models.Model):
     name = models.CharField(max_length=100)
     content = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
 
 
 class Service(models.Model):

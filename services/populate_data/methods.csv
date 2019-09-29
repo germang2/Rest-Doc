@@ -1,0 +1,4 @@
+GET;Get data
+POST;Created a new object
+PUT;Uptade an existing object
+DELETE;Delete an object
