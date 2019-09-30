@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'user',
     'projects',
     'services',
-
+    'dependencies',
 ]
 
 MIDDLEWARE = [
