@@ -8,7 +8,10 @@ class StatusCode(models.Model):
     description = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
-        return str(self.code)
+        return f'{str(self.code)} - {self.description}'
+
+    class Meta:
+        ordering = ['code']
 
 
 class Method(models.Model):
@@ -26,13 +29,16 @@ class Header(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['name']
+
 
 class Service(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=250, blank=True)
     end_point = models.CharField(max_length=200)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    json_data = JSONField()
+    json_data = JSONField(blank=True, null=True)
     method = models.ForeignKey(Method, on_delete = models.PROTECT)
     headers = models.ManyToManyField(Header)
 
@@ -58,3 +64,6 @@ class Group(models.Model):
 
     def __str__(self):
         return f'{self.name} - {self.project.name}'
+
+    class Meta:
+        ordering = ['name']
