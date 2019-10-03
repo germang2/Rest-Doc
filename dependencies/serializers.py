@@ -12,4 +12,4 @@ class DependencySerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = Dependency
-        fields = ['service', 'field', 'destination_service']
+        fields = ['id', 'service', 'field', 'destination_service']

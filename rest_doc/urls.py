@@ -33,5 +33,7 @@ urlpatterns = [
     re_path(r'^api/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     re_path(r'^api/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/', include('projects.urls')),
+    path('api/', include('services.urls')),
+    path('api/', include('dependencies.urls')),
     # url(r'^api/token/verify/$', TokenVerifyView.as_view(), name='token_verify'), #url to verify token 
 ]
