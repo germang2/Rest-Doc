@@ -19,6 +19,7 @@ class HeaderSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'content']
 
 class ServiceSerializer(serializers.ModelSerializer):
+    headers = serializers.StringRelatedField(many=True)
     class Meta:
         model = Service
         fields = ['id', 'name', 'description', 'end_point', 'project', 'json_data', 'method', 'headers']

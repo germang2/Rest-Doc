@@ -45,6 +45,15 @@ class Service(models.Model):
     def __str__(self):
         return self.name
 
+    """ This method returns a dict with the name of each field in the json_data
+        and its corresponding type of data """
+    def get_meta_data(self):
+        meta_data ={}
+        if self.json_data is not None:
+            json = self.json_data
+            for k,v in json.items():
+                meta_data[k] = v
+        return meta_data
 
 class Response(models.Model):
     status_code = models.ForeignKey(StatusCode, on_delete=models.PROTECT)
