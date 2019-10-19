@@ -7,4 +7,4 @@ class Dependency(models.Model):
     destination_service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='destination_service')
 
     def __str__(self):
-        return f'{self.service.name} - {self.name}'
+        return f'{self.service.name} <- {self.destination_service.name}'
