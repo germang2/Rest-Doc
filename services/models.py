@@ -27,7 +27,7 @@ class Header(models.Model):
     content = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.name
+        return f'{self.name}:{self.content}'
 
     class Meta:
         ordering = ['name']

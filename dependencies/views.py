@@ -5,5 +5,5 @@ from .serializers import DependencySerializer
 class DependencyViewSet(viewsets.ModelViewSet):
     queryset = Dependency.objects.all()
     serializer_class = DependencySerializer
-    #permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
