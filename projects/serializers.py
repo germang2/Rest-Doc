@@ -7,4 +7,4 @@ class ProjectSerializer(serializers.ModelSerializer):
     user = User.objects.all()
     class Meta:
         model = Project
-        fields = ['id', 'name', 'description', 'user']
+        fields = ['id', 'name', 'description', 'owner']

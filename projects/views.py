@@ -22,7 +22,7 @@ class ListProjects(APIView):
         data = {
             'name':request.data.get('name'),
             'description':request.data.get('description'),
-            'user':request.user.id
+            'owner':request.user.id
         }
 
         # validate if data is corrected
