@@ -32,5 +32,6 @@ class ProjectTest(TestCase):
         projects = Project.objects.all()
         # get API response
         response = self.client.get(reverse('projects'))
+        serializer = ProjectSerializer(projects, many=True)
         self.assertEquals(response.status_code, status.HTTP_200_OK)
-        
+        self.assertEqual(serializer.data, response.data)
