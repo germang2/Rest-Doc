@@ -35,9 +35,30 @@ class ServiceTest(TestCase):
             method=Method.objects.get(pk=1),           
         ).save()
 
+        self.service_test = Service(
+            name='Create http method',
+            description='Create a new instance of a Http method',
+            end_point='api/methods',
+            project=project,
+            method=Method.objects.get(pk=2),
+            json_data={
+                'verb':'POST',
+                'description':'Create a new instance'
+            }
+        )
+
+        self.service_test.save()
+
     def test_get_services(self):
         services = Service.objects.all()
         response = self.client.get('/api/services/')
         serializer = ServiceSerializer(services, many=True)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['results'], serializer.data)
+
+    def test_meta_data(self):
+        service = Service.objects.get(pk=self.service_test.id)
+        response = self.client.get('/api/services/'+str(self.service_test.id)+'/')
+        serializer = ServiceSerializer(service)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['meta_data'], service.get_meta_data())
